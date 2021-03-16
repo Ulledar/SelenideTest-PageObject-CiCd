@@ -29,7 +29,7 @@ public class EKatalogTest extends BaseTest{
 
     @Epic("TEST ON eKatalog")
     @Test
-    void findMouse() throws InterruptedException {
+    void findMouse() {
         open("/");
         $("a[href='/k169.htm'").click(); //компьютеры
         $("a[href='/k304.htm']").click(); //клавы и мышки
@@ -41,6 +41,5 @@ public class EKatalogTest extends BaseTest{
         //$("span.u:contains(SteelSeries Rival 3 Wireless)").click();
         $("a[title='Мышка Logitech G Pro Wireless ']").click();
         $("div[data-txt-title='Logitech G Pro Wireless']").shouldHave(text(logitechName));
-        Thread.sleep(3000);
     }
 }

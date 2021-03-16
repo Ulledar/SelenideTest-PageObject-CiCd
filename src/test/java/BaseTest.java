@@ -8,7 +8,7 @@ public class BaseTest {
 
     @BeforeEach
     void start() {
-        Configuration.remote = "http://localhost:4444/wd/hub";
+        Configuration.remote = "http://192.168.0.121:4444/wd/hub";
         Configuration.browser = "chrome";
         Configuration.startMaximized = false;
         DesiredCapabilities dc = new DesiredCapabilities();
