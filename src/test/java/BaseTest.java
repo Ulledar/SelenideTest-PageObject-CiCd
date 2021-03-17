@@ -2,7 +2,6 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import static com.codeborne.selenide.Selenide.open;
 
 public class BaseTest {
 
@@ -10,7 +9,7 @@ public class BaseTest {
     void start() {
         Configuration.remote = "http://192.168.0.121:4444/wd/hub";
         Configuration.browser = "chrome";
-        Configuration.startMaximized = false;
+        Configuration.startMaximized = true;
         DesiredCapabilities dc = new DesiredCapabilities();
         dc.setCapability("enableVNC", true);
         Configuration.browserCapabilities = dc;
