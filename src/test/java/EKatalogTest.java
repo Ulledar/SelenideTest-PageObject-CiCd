@@ -1,5 +1,3 @@
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
 import io.qameta.allure.*;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
@@ -9,8 +7,15 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class EKatalogTest extends BaseTest {
 
-    String steelSeriesName = "SteelSeries Rival 3 Wireless";
-    String logitechName = "Logitech G Pro Wireless";
+    final String STEELSERIES = "SteelSeries Rival 3 Wireless";
+    final String LOGITECH = "Logitech G Pro Wireless";
+
+    @Test
+    void searchProduct0() {
+        open("/");
+        new HomePage().search(STEELSERIES);
+        new Check().checkTheTitle(STEELSERIES);
+    }
 
     @Epic("TEST ON eKatalog")
     @Feature("Test of search field.")
@@ -18,10 +23,10 @@ public class EKatalogTest extends BaseTest {
     @Description("Test for testing search possibility.")
     @Story("Try to pass the test")
     @Test
-    void searchProduct() {
+    void searchProduct1() {
         open("/");
-        $("#ek-search").val(steelSeriesName).pressEnter();
-        Assert.assertTrue(title().contains(steelSeriesName));
+        $("#ek-search").val(STEELSERIES).pressEnter();
+        Assert.assertTrue(title().contains(STEELSERIES));
     }
 
     @Epic("TEST ON eKatalog")
@@ -32,8 +37,8 @@ public class EKatalogTest extends BaseTest {
     @Test
     void searchProduct2() {
         open("/");
-        $("#ek-search").val(steelSeriesName).pressEnter();
-        $(".page-title").shouldHave(text(steelSeriesName));
+        $("#ek-search").val(STEELSERIES).pressEnter();
+        $(".page-title").shouldHave(text(STEELSERIES));
     }
 
     @Epic("TEST ON eKatalog")
@@ -49,6 +54,6 @@ public class EKatalogTest extends BaseTest {
         $("form#form_match label[for='br124']").click(); //logitech
         $(".show-models").click();
         $(" a#product_1539438").click();
-        $("div[data-txt-title='Logitech G Pro Wireless']").shouldHave(text(logitechName));
+        $("div[data-txt-title='Logitech G Pro Wireless']").shouldHave(text(LOGITECH));
     }
 }

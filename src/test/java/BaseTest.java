@@ -21,9 +21,6 @@ public class BaseTest {
         Configuration.screenshots = false;
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
-
-//        Selenide.clearBrowserCookies();
-//        Selenide.clearBrowserLocalStorage();
     }
 
 }
