@@ -10,6 +10,11 @@ public class EKatalogTest extends BaseTest {
     final String STEELSERIES = "SteelSeries Rival 3 Wireless";
     final String LOGITECH = "Logitech G Pro Wireless";
 
+    @Epic("TEST ON eKatalog")
+    @Feature("feature")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("desc 1")
+    @Story("story 1")
     @Test
     void searchProduct0() {
         open("/");

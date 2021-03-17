@@ -6,5 +6,4 @@ public class HomePage {
         $("#ek-search").val(query).pressEnter();
     }
 
-
 }
