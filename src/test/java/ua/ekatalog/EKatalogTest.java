@@ -24,7 +24,6 @@ public class EKatalogTest extends BaseTest {
     void registration() {
         String testName = "test";
         HomePage homePage = new HomePage();
-        open("/");
         homePage.logIn();
         homePage.signUp();
         homePage.nameField(testName);
@@ -42,7 +41,6 @@ public class EKatalogTest extends BaseTest {
     @Story("Try to pass the test")
     @Test
     void searchProduct1() {
-        open("/");
         new HomePage().search(STEELSERIES);
         Assert.assertTrue(title().contains(STEELSERIES));
     }
@@ -54,7 +52,6 @@ public class EKatalogTest extends BaseTest {
     @Story("Try to pass the test. 2nd realization")
     @Test
     void searchProduct2() {
-        open("/");
         new HomePage().search(STEELSERIES);
         $(".page-title").shouldHave(text(STEELSERIES));
     }
@@ -65,13 +62,12 @@ public class EKatalogTest extends BaseTest {
     @Description("Looking for Logitech mouse.")
     @Test
     void findMouse() {
-        open("/");
         $("a[href='/k169.htm'").click(); //компьютеры
         $("a[href='/k304.htm']").click(); //клавы и мышки
         $("a[href='/k267.htm']").click(); //мышки
         $("form#form_match label[for='br124']").click(); //logitech
         $(".show-models").click();
-        $(" a#product_1539438").click();
+        $("a#product_1539438").click();
         $("div[data-txt-title='Logitech G Pro Wireless']").shouldHave(text(LOGITECH));
     }
 }

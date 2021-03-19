@@ -7,23 +7,27 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import static com.codeborne.selenide.Selenide.open;
+
 
 public class BaseTest {
 
     @BeforeEach
     void start() {
-        Configuration.remote = "http://192.168.0.121:4444/wd/hub";
+        Configuration.remote = "http://192.168.0.121:4444/wd/hub"; //run test in selenoid
         Configuration.baseUrl = "https://ek.ua/";
         Configuration.browser = "chrome";
-        Configuration.startMaximized = true;
-        Configuration.fastSetValue = true;
+        Configuration.startMaximized = true; //open browser window in max
+        Configuration.fastSetValue = true; // fast (copy/past) way to output
         DesiredCapabilities dc = new DesiredCapabilities();
-        dc.setCapability("enableVNC", true);
+        dc.setCapability("enableVNC", true); //turn on selenoid
         Configuration.browserCapabilities = dc;
         Configuration.savePageSource = false;
         Configuration.screenshots = false;
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
+
+        open("/");
     }
 
 }
