@@ -28,9 +28,7 @@ public class EKatalogTest extends BaseTest {
         homePage.passwordField("test");
         homePage.clickSignUpButton();
         homePage.clickAccountName();
-        sleep(5000);
         Assertions.assertEquals($("#mui_user_login_row a").getText(), testName);
-        sleep(5000);
     }
 
     @Epic("TEST ON eKatalog")
