@@ -1,3 +1,5 @@
+package ua.ekatalog;
+
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
@@ -10,7 +12,7 @@ public class BaseTest {
 
     @BeforeEach
     void start() {
-        Configuration.remote = "http://192.168.0.121:4444/wd/hub";
+//        Configuration.remote = "http://192.168.0.121:4444/wd/hub";
         Configuration.baseUrl = "https://ek.ua/";
         Configuration.browser = "chrome";
         Configuration.startMaximized = true;

@@ -1,3 +1,7 @@
+package ua.ekatalog;
+
+import ua.ekatalog.pages.HomePage;
+
 import io.qameta.allure.*;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
@@ -40,19 +44,18 @@ public class EKatalogTest extends BaseTest {
     void searchProduct1() {
         open("/");
         new HomePage().search(STEELSERIES);
-        //$("#ek-search").val(STEELSERIES).pressEnter();
         Assert.assertTrue(title().contains(STEELSERIES));
     }
 
     @Epic("TEST ON eKatalog")
-    @Feature("Test of search field. 2nd")
+    @Feature("Test of search field.")
     @Severity(SeverityLevel.NORMAL)
     @Description("Test for testing search possibility.")
     @Story("Try to pass the test. 2nd realization")
     @Test
     void searchProduct2() {
         open("/");
-        $("#ek-search").val(STEELSERIES).pressEnter();
+        new HomePage().search(STEELSERIES);
         $(".page-title").shouldHave(text(STEELSERIES));
     }
 
