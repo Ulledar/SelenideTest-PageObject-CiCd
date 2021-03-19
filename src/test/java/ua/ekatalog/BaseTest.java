@@ -14,14 +14,15 @@ public class BaseTest {
 
     @BeforeEach
     void start() {
+        DesiredCapabilities dc = new DesiredCapabilities();
+        dc.setCapability("enableVNC", true); //turn on selenoid
+
         Configuration.remote = "http://192.168.0.121:4444/wd/hub"; //run test in selenoid
+        Configuration.browserCapabilities = dc;
         Configuration.baseUrl = "https://ek.ua/";
         Configuration.browser = "chrome";
         Configuration.startMaximized = true; //open browser window in max
         Configuration.fastSetValue = true; // fast (copy/past) way to output
-        DesiredCapabilities dc = new DesiredCapabilities();
-        dc.setCapability("enableVNC", true); //turn on selenoid
-        Configuration.browserCapabilities = dc;
         Configuration.savePageSource = false;
         Configuration.screenshots = false;
 
