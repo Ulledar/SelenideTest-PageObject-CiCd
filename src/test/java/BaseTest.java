@@ -14,6 +14,7 @@ public class BaseTest {
         Configuration.baseUrl = "https://ek.ua/";
         Configuration.browser = "chrome";
         Configuration.startMaximized = true;
+        Configuration.fastSetValue = true;
         DesiredCapabilities dc = new DesiredCapabilities();
         dc.setCapability("enableVNC", true);
         Configuration.browserCapabilities = dc;

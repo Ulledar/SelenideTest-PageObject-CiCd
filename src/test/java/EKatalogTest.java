@@ -1,5 +1,6 @@
 import io.qameta.allure.*;
 import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -11,15 +12,25 @@ public class EKatalogTest extends BaseTest {
     final String LOGITECH = "Logitech G Pro Wireless";
 
     @Epic("TEST ON eKatalog")
-    @Feature("feature")
+    @Feature("sign up")
     @Severity(SeverityLevel.NORMAL)
-    @Description("desc 1")
-    @Story("story 1")
+    @Description("full way to sign up")
+    @Story("open login window for sign up and check succes")
     @Test
-    void searchProduct0() {
+    void registration() {
+        String testName = "test";
+        HomePage homePage = new HomePage();
         open("/");
-        new HomePage().search(STEELSERIES);
-        new Check().checkTheTitle(STEELSERIES);
+        homePage.logIn();
+        homePage.signUp();
+        homePage.nameField(testName);
+        homePage.emailField("test");
+        homePage.passwordField("test");
+        homePage.clickSignUpButton();
+        homePage.clickAccountName();
+        sleep(5000);
+        Assertions.assertEquals($("#mui_user_login_row a").getText(), testName);
+        sleep(5000);
     }
 
     @Epic("TEST ON eKatalog")
@@ -30,7 +41,8 @@ public class EKatalogTest extends BaseTest {
     @Test
     void searchProduct1() {
         open("/");
-        $("#ek-search").val(STEELSERIES).pressEnter();
+        new HomePage().search(STEELSERIES);
+        //$("#ek-search").val(STEELSERIES).pressEnter();
         Assert.assertTrue(title().contains(STEELSERIES));
     }
 
