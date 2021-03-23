@@ -17,7 +17,8 @@ public class BaseTest {
         DesiredCapabilities dc = new DesiredCapabilities();
         dc.setCapability("enableVNC", true); //turn on selenoid
 
-        Configuration.remote = "http://192.168.0.121:4444/wd/hub"; //run test in selenoid
+//        Configuration.remote = "http://192.168.0.121:4444/wd/hub"; //run test in selenoid windows
+        Configuration.remote =  "http://192.168.0.118:4444/wb/hub"; //ubunta
         Configuration.browserCapabilities = dc;
         Configuration.baseUrl = "https://ek.ua/";
         Configuration.browser = "chrome";
