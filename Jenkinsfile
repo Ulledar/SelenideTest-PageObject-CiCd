@@ -3,7 +3,12 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'mvn --version'
+                node {
+                    script {
+                        echo 'hello again'
+                        sh 'mvn --version'
+                    }
+                }
             }
         }
     }
