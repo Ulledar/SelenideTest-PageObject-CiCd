@@ -17,6 +17,8 @@ public class HomePage {
             clickSignUpButtonSelector = By.cssSelector(".registration-actions button.ek-form-btn.blue"),
             clickAccountNameSelector = By.cssSelector("#mui_user_login_row a");
 
+
+
     @Step("input to search field")
     public void search(String query) {
         $(searchSelector).val(query).pressEnter();
