@@ -18,7 +18,7 @@ pipeline {
                 node('master') {
                     script {
                         echo "hello again ${PROJECT_NAME}"
-                        sh 'mvn --version'
+                        sh 'sh mvnw --version'
                     }
                 }
             }
