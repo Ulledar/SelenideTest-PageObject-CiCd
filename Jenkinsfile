@@ -7,9 +7,7 @@ node {
     }
 
     stage('cron'){
-        triggers {
             cron('H/3 * * * *')
-        }
     }
 
     stage('SCM') {
