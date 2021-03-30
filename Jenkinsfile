@@ -1,32 +1,58 @@
 def label = "PipeTest"
 
-node {
-
+pipeline {
+    agent any
     triggers {
         cron('H/2 * * * *')
     }
 
-    stage('SCM') {
-        git 'https://github.com/Ulledar/SelenidePractice.git'
-    }
+        stages {
+            stage('SCM') {
+                git 'https://github.com/Ulledar/SelenidePractice.git'
+            }
 
-    stage('Compile-Package') {
-        def mvnHome = tool name: '3.6.3', type: 'maven'
-        sh "${mvnHome}/bin/mvn package"
-    }
+            stage('Compile-Package') {
+                def mvnHome = tool name: '3.6.3', type: 'maven'
+                sh "${mvnHome}/bin/mvn package"
+            }
 
-    stage('Reports') {
-        script {
-            allure([
-                includeProperties: false,
-                jdk: '',
-                properties: [],
-                reportBuildPolicy: 'ALWAYS',
-                results: [[path: 'target/allure-results']]
-            ])
+            stage('Reports') {
+                script {
+                    allure([
+                        includeProperties: false,
+                        jdk: '',
+                        properties: [],
+                        reportBuildPolicy: 'ALWAYS',
+                        results: [[path: 'target/allure-results']]
+                    ])
+                }
+            }
         }
-    }
 }
+
+// node {
+//
+//     stage('SCM') {
+//         git 'https://github.com/Ulledar/SelenidePractice.git'
+//     }
+//
+//     stage('Compile-Package') {
+//         def mvnHome = tool name: '3.6.3', type: 'maven'
+//         sh "${mvnHome}/bin/mvn package"
+//     }
+//
+//     stage('Reports') {
+//         script {
+//             allure([
+//                 includeProperties: false,
+//                 jdk: '',
+//                 properties: [],
+//                 reportBuildPolicy: 'ALWAYS',
+//                 results: [[path: 'target/allure-results']]
+//             ])
+//         }
+//     }
+// }
 
 // pipeline {
 //
