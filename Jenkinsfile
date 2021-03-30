@@ -2,7 +2,19 @@ def label = "PipeTest"
 
 node {
 
-    cron('H/2 * * * *')
+    options {
+        timeout(time: 2, unit: 'MINUTES')
+    }
+
+    environment {
+        PROJECT_NAME = "ololosha ololo"
+    }
+
+    stage('cron'){
+        triggers {
+            cron('H/3 * * * *')
+        }
+    }
 
     stage('SCM') {
         git 'https://github.com/Ulledar/SelenidePractice.git'
