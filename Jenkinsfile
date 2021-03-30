@@ -19,27 +19,29 @@ def label = "PipeTest"
 
 node {
     stage('SCM') {
-                git 'https://github.com/Ulledar/SelenidePractice.git'
+        git 'https://github.com/Ulledar/SelenidePractice.git'
     }
 
     stage('Compile-Package') {
-                def mvnHome = tool name: '3.6.3', type: 'maven'
-                sh "${mvnHome}/bin/mvn package"
+        steps {
+            def mvnHome = tool name: '3.6.3', type: 'maven'
+            sh "${mvnHome}/bin/mvn package"
+        }
 
-                post {
-                              always {
-                                script {
-                                  allure([
-                                    includeProperties: false,
-                                    jdk: '',
-                                    properties: [],
-                                    reportBuildPolicy: 'ALWAYS',
-                                    results: [[path: 'target/allure-results']]
-                                  ])
-                                }
-                              }
-                            }
+        steps {
+            post {
+                always {
+                    script {
+                        allure([
+                            includeProperties: false,
+                            jdk: '',
+                            properties: [],
+                            reportBuildPolicy: 'ALWAYS',
+                            results: [[path: 'target/allure-results']]
+                        ])
+                    }
+                }
+            }
+        }
     }
-
-
 }
