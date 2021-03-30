@@ -23,13 +23,9 @@ node {
     }
 
     stage('Compile-Package') {
-        steps {
-            def mvnHome = tool name: '3.6.3', type: 'maven'
-            sh "${mvnHome}/bin/mvn package"
-        }
+        def mvnHome = tool name: '3.6.3', type: 'maven'
+        sh "${mvnHome}/bin/mvn package"
 
-        steps {
-            post {
                 always {
                     script {
                         allure([
@@ -41,7 +37,5 @@ node {
                         ])
                     }
                 }
-            }
-        }
     }
 }
