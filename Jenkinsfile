@@ -28,7 +28,6 @@ node {
     }
 
     stage('reports') {
-        steps {
             script {
                 allure([
                         includeProperties: false,
@@ -38,6 +37,5 @@ node {
                         results: [[path: 'target/allure-results']]
                 ])
             }
-        }
     }
 }
