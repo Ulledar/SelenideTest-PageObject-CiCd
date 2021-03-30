@@ -6,10 +6,6 @@ node {
         PROJECT_NAME = "ololosha ololo"
     }
 
-    stage('cron'){
-            cron('H/3 * * * *')
-    }
-
     stage('SCM') {
         git 'https://github.com/Ulledar/SelenidePractice.git'
     }
