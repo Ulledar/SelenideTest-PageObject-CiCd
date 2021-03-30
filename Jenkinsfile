@@ -14,16 +14,14 @@ pipeline {
 
     tools {
             maven '3.6.3'
-            jdk 'jdk11'
-        }
+    }
 
     stages {
         stage('build') {
             steps {
-                script {
                     echo "hello again ${PROJECT_NAME}"
                     sh 'mvn -Dmaven.test.failure.ignore=true install'
-                }
+            }
         }
 
         stage('Publish') {
