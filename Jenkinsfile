@@ -2,6 +2,10 @@ def label = "PipeTest"
 
 node {
 
+    triggers {
+        cron('H/2 * * * *')
+    }
+
     stage('SCM') {
         git 'https://github.com/Ulledar/SelenidePractice.git'
     }
