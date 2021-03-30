@@ -26,4 +26,18 @@ node {
                 def mvnHome = tool name: '3.6.3', type: 'maven'
                 sh "${mvnHome}/bin/mvn package"
     }
+
+            post {
+              always {
+                script {
+                  allure([
+                    includeProperties: false,
+                    jdk: '',
+                    properties: [],
+                    reportBuildPolicy: 'ALWAYS',
+                    results: [[path: 'target/allure-results']]
+                  ])
+                }
+              }
+            }
 }
