@@ -12,14 +12,16 @@ pipeline {
         PROJECT_NAME = "ololosha ololo"
     }
 
-    node {
-        stage('SCM') {
-            git 'https://github.com/Ulledar/SelenidePractice.git'
-        }
+    stages {
+        node {
+                stage('SCM') {
+                    git 'https://github.com/Ulledar/SelenidePractice.git'
+                }
 
-        stage('Compile-Package') {
-            def mvnHome = tool name: '3.6.3', type: 'maven'
-            sh "${mvnHome}/bin/mvn package"
-        }
+                stage('Compile-Package') {
+                    def mvnHome = tool name: '3.6.3', type: 'maven'
+                    sh "${mvnHome}/bin/mvn package"
+                }
+            }
     }
 }
