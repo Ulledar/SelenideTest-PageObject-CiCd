@@ -1,25 +1,29 @@
 def label = "PipeTest"
 
-pipeline {
+// pipeline {
+//
+//     agent none
+//
+//     options {
+//         timeout(time: 1, unit: 'MINUTES')
+//     }
+//
+//     environment {
+//         PROJECT_NAME = "ololosha ololo"
+//     }
+//
+//     stages {
+//
+//     }
+// }
 
-    agent none
-
-    options {
-        timeout(time: 1, unit: 'MINUTES')
+node {
+    stage('SCM') {
+                git 'https://github.com/Ulledar/SelenidePractice.git'
     }
 
-    environment {
-        PROJECT_NAME = "ololosha ololo"
-    }
-
-    stages {
-        stage('SCM') {
-            git 'https://github.com/Ulledar/SelenidePractice.git'
-        }
-
-        stage('Compile-Package') {
-            def mvnHome = tool name: '3.6.3', type: 'maven'
-            sh "${mvnHome}/bin/mvn package"
-        }
+    stage('Compile-Package') {
+                def mvnHome = tool name: '3.6.3', type: 'maven'
+                sh "${mvnHome}/bin/mvn package"
     }
 }
