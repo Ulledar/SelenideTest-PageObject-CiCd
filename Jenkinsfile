@@ -19,12 +19,13 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                    echo "hello again ${PROJECT_NAME}"
-                    sh 'mvn -Dmaven.test.failure.ignore=true install'
+                echo "hello again ${PROJECT_NAME}"
+                sh 'mvn -Dmaven.test.failure.ignore=true install'
             }
         }
 
         stage('Publish') {
+            steps {
                 echo 'Publish Allure report'
                 publishHTML(
                         target: [
@@ -37,5 +38,6 @@ pipeline {
                         ]
                 )
             }
+        }
     }
 }
