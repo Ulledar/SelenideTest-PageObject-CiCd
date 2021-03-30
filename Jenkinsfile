@@ -25,17 +25,19 @@ node {
     stage('Compile-Package') {
         def mvnHome = tool name: '3.6.3', type: 'maven'
         sh "${mvnHome}/bin/mvn package"
+    }
 
-                always {
-                    script {
-                        allure([
-                            includeProperties: false,
-                            jdk: '',
-                            properties: [],
-                            reportBuildPolicy: 'ALWAYS',
-                            results: [[path: 'target/allure-results']]
-                        ])
-                    }
-                }
+    stage('reports') {
+        steps {
+            script {
+                allure([
+                        includeProperties: false,
+                        jdk: '',
+                        properties: [],
+                        reportBuildPolicy: 'ALWAYS',
+                        results: [[path: 'target/allure-results']]
+                ])
+            }
+        }
     }
 }
