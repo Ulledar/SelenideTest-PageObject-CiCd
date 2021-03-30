@@ -12,32 +12,14 @@ pipeline {
         PROJECT_NAME = "ololosha ololo"
     }
 
-    tools {
-            maven '3.6.3'
-    }
-
-    stages {
-        stage('build') {
-            steps {
-                echo "hello again ${PROJECT_NAME}"
-                sh 'mvn -Dmaven.test.failure.ignore=true install'
-            }
+    node {
+        stage('SCM') {
+            git 'https://github.com/Ulledar/SelenidePractice.git'
         }
 
-        stage('Publish') {
-            steps {
-                echo 'Publish Allure report'
-                publishHTML(
-                        target: [
-                                allowMissing         : false,
-                                alwaysLinkToLastBuild: false,
-                                keepAll              : true,
-                                reportDir            : 'target/site/allure-maven-plugin',
-                                reportFiles          : 'index.html',
-                                reportName           : "Allure Report"
-                        ]
-                )
-            }
+        stage('Compile-Package') {
+            def mvnHome = tool name: '3.6.3', type: 'maven'
+            sh "${mvnHome}/bin/mvn package"
         }
     }
 }
