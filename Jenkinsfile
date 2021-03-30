@@ -2,10 +2,6 @@ def label = "PipeTest"
 
 node {
 
-    options {
-        timeout(time: 2, unit: 'MINUTES')
-    }
-
     environment {
         PROJECT_NAME = "ololosha ololo"
     }
