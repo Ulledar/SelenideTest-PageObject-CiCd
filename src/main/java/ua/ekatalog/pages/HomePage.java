@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class HomePage {
 
-    private By
+    private final By
             searchSelector = By.cssSelector("#ek-search"),
             logInSelector = By.cssSelector("span.wu_entr"),
             signUpSelector = By.cssSelector("span[class='j-wrap orange']"),

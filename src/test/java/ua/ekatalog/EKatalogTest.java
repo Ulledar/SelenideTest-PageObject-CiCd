@@ -3,7 +3,6 @@ package ua.ekatalog;
 import ua.ekatalog.pages.HomePage;
 
 import io.qameta.allure.*;
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -22,6 +21,7 @@ public class EKatalogTest extends BaseTest {
     @Story("open login window for sign up and check succes")
     @Test
     void registration() {
+        open("/");
         String testName = "test";
         HomePage homePage = new HomePage();
         homePage.logIn();
@@ -41,8 +41,9 @@ public class EKatalogTest extends BaseTest {
     @Story("Try to pass the test")
     @Test
     void searchProduct1() {
+        open("/");
         new HomePage().search(STEELSERIES);
-        Assert.assertTrue(title().contains(STEELSERIES));
+        Assertions.assertTrue(title().contains(STEELSERIES));
     }
 
     @Epic("TEST ON eKatalog")
@@ -52,17 +53,18 @@ public class EKatalogTest extends BaseTest {
     @Story("Try to pass the test. 2nd realization")
     @Test
     void searchProduct2() {
+        open("/");
         new HomePage().search(STEELSERIES);
         $(".page-title").shouldHave(text(STEELSERIES));
     }
 
-    //cron test
     @Epic("TEST ON eKatalog")
     @Feature("Test for finding Logitech")
     @Severity(SeverityLevel.NORMAL)
     @Description("Looking for Logitech mouse.")
     @Test
     void findMouse() {
+        open("/");
         $("a[href='/k169.htm'").click(); //компьютеры
         $("a[href='/k304.htm']").click(); //клавы и мышки
         $("a[href='/k267.htm']").click(); //мышки
