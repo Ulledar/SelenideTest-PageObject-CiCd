@@ -56,6 +56,7 @@ public class EKatalogTest extends BaseTest {
         $(".page-title").shouldHave(text(STEELSERIES));
     }
 
+    //cron test
     @Epic("TEST ON eKatalog")
     @Feature("Test for finding Logitech")
     @Severity(SeverityLevel.NORMAL)
