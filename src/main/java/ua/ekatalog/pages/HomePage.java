@@ -18,7 +18,6 @@ public class HomePage {
             clickAccountNameSelector = By.cssSelector("#mui_user_login_row a");
 
 
-
     @Step("input to search field")
     public void search(String query) {
         $(searchSelector).val(query).pressEnter();
