@@ -30,6 +30,4 @@ public class BaseTest {
     }
 
 }
-
-
 //        Configuration.remote = "http://192.168.0.121:4444/wd/hub"; //run test in selenoid windows
