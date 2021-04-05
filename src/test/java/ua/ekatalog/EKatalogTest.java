@@ -5,6 +5,9 @@ import ua.ekatalog.pages.HomePage;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import ua.ekatalog.pages.MousesKeyboardsPage;
+import ua.ekatalog.pages.ProductBar;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -60,9 +63,8 @@ public class EKatalogTest extends BaseTest {
     @Description("Looking for Logitech mouse.")
     @Test
     void findMouse() {
-        $("a[href='/k169.htm'").click(); //компьютеры
-        $("a[href='/k304.htm']").click(); //клавы и мышки
-        $("a[href='/k267.htm']").click(); //мышки
+        new ProductBar().mousesAndKeyboards();
+        new MousesKeyboardsPage().mouseChose();
         $("form#form_match label[for='br124']").click(); //logitech
         $(".show-models").click();
         $("a#product_1539438").click();
