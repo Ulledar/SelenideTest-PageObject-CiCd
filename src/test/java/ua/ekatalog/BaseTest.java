@@ -4,6 +4,8 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static com.codeborne.selenide.Selenide.open;
@@ -11,6 +13,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class BaseTest {
 
+    @Execution(ExecutionMode.CONCURRENT)
     @BeforeEach
     public void start() {
         DesiredCapabilities dc = new DesiredCapabilities();
