@@ -14,7 +14,8 @@ public class ProductBar {
     @Step("chose mouse & keyboards directory")
     public void mousesAndKeyboards() {
         $(computers).click();
-        $(mousesAndKeyboards).click();
+        $(By.linkText("Клавиатуры и мышки")).click();
+//        $(mousesAndKeyboards).click();    //поиск клавиатур и мышек по css
     }
 
 }

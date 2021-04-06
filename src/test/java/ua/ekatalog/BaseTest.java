@@ -13,10 +13,10 @@ public class BaseTest {
 
     @BeforeEach
     public void start() {
-        DesiredCapabilities dc = new DesiredCapabilities();
-        dc.setCapability("enableVNC", true); //turn on selenoid
-        Configuration.browserCapabilities = dc;
-        Configuration.remote = "http://192.168.0.118:4444/wd/hub"; //ubunta
+//        DesiredCapabilities dc = new DesiredCapabilities();
+//        dc.setCapability("enableVNC", true); //turn on selenoid
+//        Configuration.browserCapabilities = dc;
+//        Configuration.remote = "http://192.168.0.118:4444/wd/hub"; //ubunta
         Configuration.baseUrl = "https://ek.ua/";
         Configuration.browser = "chrome";
         Configuration.startMaximized = true; //open browser window in max

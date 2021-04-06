@@ -14,6 +14,7 @@ public class MousesKeyboardsPage {
     @Step("chose mouses")
     public void mouseChose() {
         $(mouses).click();
+//        $(By.linkText("Мышки")).click();  //поиск по тексту
     }
 
     @Step("chose keyboards")
