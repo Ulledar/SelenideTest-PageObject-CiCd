@@ -2,8 +2,6 @@ def label = "PipeTest"
 
 node {
 
-    // test upd for cron
-
     environment {
         PROJECT_NAME = "ololosha ololo"
     }
