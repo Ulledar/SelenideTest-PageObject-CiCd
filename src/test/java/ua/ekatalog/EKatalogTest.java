@@ -1,5 +1,7 @@
 package ua.ekatalog;
 
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 import ua.ekatalog.pages.HomePage;
 
 import io.qameta.allure.*;
@@ -16,6 +18,7 @@ public class EKatalogTest extends BaseTest {
     final String STEELSERIES = "SteelSeries Rival 3 Wireless";
     final String LOGITECH = "Logitech G Pro Wireless";
 
+    @Execution(ExecutionMode.CONCURRENT)
     @Epic("TEST ON eKatalog")
     @Feature("sign up")
     @Severity(SeverityLevel.NORMAL)
@@ -35,6 +38,7 @@ public class EKatalogTest extends BaseTest {
         Assertions.assertEquals($("#mui_user_login_row a").getText(), testName);
     }
 
+    @Execution(ExecutionMode.CONCURRENT)
     @Epic("TEST ON eKatalog")
     @Feature("Test of search field.")
     @Severity(SeverityLevel.NORMAL)
@@ -46,6 +50,7 @@ public class EKatalogTest extends BaseTest {
         Assertions.assertTrue(title().contains(STEELSERIES));
     }
 
+    @Execution(ExecutionMode.CONCURRENT)
     @Epic("TEST ON eKatalog")
     @Feature("Test of search field.")
     @Severity(SeverityLevel.NORMAL)
@@ -57,6 +62,7 @@ public class EKatalogTest extends BaseTest {
         $(".page-title").shouldHave(text(STEELSERIES));
     }
 
+    @Execution(ExecutionMode.CONCURRENT)
     @Epic("TEST ON eKatalog")
     @Feature("Test for finding Logitech")
     @Severity(SeverityLevel.NORMAL)
